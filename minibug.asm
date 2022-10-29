@@ -2,6 +2,16 @@
 ; COPYWRITE 1973, MOTOROLA INC
 ; REV 004 (USED WITH MIKBUG)
 
+; The DL11 has 2 device registers for the receive side:
+; - Control and Status Register (CSR)
+; - data buffer register
+; 
+; Similarly, two for the transmit side.
+; 
+; The main console (KL11/DL11-compatible device)
+; located at 0777560 (so the receiver registers are
+; 0777560-2, and the transmitter registers are 0777564-6).
+
 DL11RCSR        =       0177560
 DL11RBUF        =       0177562
 DL11XCSR        =       0177564
@@ -31,7 +41,10 @@ PUTS:	MOVB	(R1)+,R0	; load xmt char
 	BNE	1b		; string is terminated with 0
 	RTS	PC
 
-OUTHL:	ASH	$-4,R0		; OUT HEX LEFT BCD DIGIT
+OUTHL:	ASR	R0		; OUT HEX LEFT BCD DIGIT
+	ASR	R0
+	ASR	R0
+	ASR	R0
 OUTHR:	BIC	$~17,R0		; OUT HEX RIGHT BCD DIGIT
 	ADD	$'0',R0
 	CMPB	R0,$'9'
@@ -99,7 +112,10 @@ PUTHEX:
 BYTE:	MOV	R2,-(SP)
 	JSR	PC,INHEX
 	BIC	$~17,R0
-	ASH	$4,R0
+	ASL	R0
+	ASL	R0
+	ASL	R0
+	ASL	R0
 	MOV	R0,R2
 	JSR	PC,INHEX
 	BIC	$~17,R0
