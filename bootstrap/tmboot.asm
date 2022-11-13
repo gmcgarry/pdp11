@@ -1,6 +1,6 @@
 ; boot from TM11 magnetic tape
 
-	.org 100000
+	.org	017764
 
 	mov	$172526,R0
 	mov	R0,-(R0)
