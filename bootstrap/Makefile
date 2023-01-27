@@ -1,7 +1,10 @@
-SRCS = bm792.asm mb9312.asm rf11boot.asm tc11boot.asm tmboot.asm rp11boot.asm rk11boot.asm rl11boot.asm pc11boot.asm absload.asm
+SRCS = bm792.asm mb9312.asm rf11load.asm tc11load.asm tmload.asm rp11load.asm rk11load.asm rl11load.asm pc11load.asm absload.asm
 BINS = $(SRCS:.asm=.lda)
 
 all:	$(BINS)
+
+tmload.lda:	tmload.bin
+	bin2load -i $< -o $@ -a 017764
 
 clean:
 	$(RM) *.lst *.bin *.lda
@@ -13,6 +16,3 @@ clean:
 
 .asm.bin:
 	pasm-pdp11 -d1000 -F bin -o $@ $< > $@.lst
-
-tmboot.lda:	tmboot.bin
-	bin2load -i $< -o $@ -a 0100000

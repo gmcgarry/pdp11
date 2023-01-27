@@ -1,4 +1,4 @@
-; boot from TM11 magnetic tape
+; boot from TM11 magnetic tape (to address 0)
 
 	.org	017764
 
