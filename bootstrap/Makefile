@@ -1,9 +1,9 @@
-SRCS = bm792.asm mb9312.asm rf11load.asm tc11load.asm tmload.asm rp11load.asm rk11load.asm rl11load.asm pc11load.asm absload.asm
+SRCS = bm792.asm mb9312.asm rf11load.asm tc11load.asm tm11load.asm rp11load.asm rk11load.asm rl11load.asm pc11load.asm absload.asm
 BINS = $(SRCS:.asm=.lda)
 
 all:	$(BINS)
 
-tmload.lda:	tmload.bin
+tm11load.lda:	tm11load.bin
 	bin2load -i $< -o $@ -a 017764
 
 clean:
