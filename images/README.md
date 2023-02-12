@@ -51,26 +51,26 @@ This model is capable of running time-sharing, using memory management.
 
 ![PDP-11/34](IMG_20230204_155328402.jpg)
 
-### Cards
-	- M9312 - UNIBUS ROM and bus termination 
-	- M7859 - KY11-LB console controller
-	- M7254 - RK11-D disk controller
-	- M7255 - RK11-D disk controller
-	- M7256 - RK11-D disk controller
-	- M7257 - RK11-D disk controller
-	- M9202 - UNIBUS Jumper module (distribute AC loads and interconnect segments).
+### Modules
+	- M9312 : UNIBUS ROM and bus termination 
+	- M7859 : KY11-LB console controller
+	- M7254 : RK11-D disk controller
+	- M7255 : RK11-D disk controller
+	- M7256 : RK11-D disk controller
+	- M7257 : RK11-D disk controller
+	- M9202 : UNIBUS Jumper module (distribute AC loads and interconnect segments).
 
 Boot ROM addresses: 773000-773776 (high ROM) and 765000-765776 (low ROM)
 
-### Possible additional cards
+### Supported modules
 
-	- M7762 RL controller
-	- M7850 Parity controller
-	- M7856 SLU/Clock
-	- M7859 KB interface
-	- M8264 SACK timeout module
-	- M9301 Boot ROM + UNIBUS terminator
-	- M9302 UNIBUS terminator
+	- M7762 : RL11 disk controller (hex slot)
+	- M7850 : Parity controller
+	- M7856 : SLU/Clock
+	- M7859 : KB interface
+	- M8264 : SACK timeout module
+	- M9301 : Boot ROM + UNIBUS terminator
+	- M9302 : UNIBUS terminator
 
 ### Using the console
 
@@ -121,31 +121,28 @@ which showed address/data digitally.
 
 Released around 1985.  QBUS machine. BA-23 chassis?
 
-KD-J11B CPU module
-
-![KD-J11B CPU module](IMG_20230211_154526274.jpg)
-
 ![Micro PDP-11/83](IMG_20230211_160618215.jpg)
 
-Cards:
-	- M9404 Q22 bus cable connector - CPU box AB DUAL
-	- M7555 RQDX3 MFM Winchester and floppy disk controller DUAL
+### Modules:
+	- M8190 : KD-J11-BF CPU J11 CPU 18MHz with 2 boot/diagnostic ROMs + FPJ11-AA [quad slot]
+	- M7957 : DZV11 quad asyncchronous multiplexer with RS232C interfaces [quad slot]
+	- M9404 : Q22 bus cable connector [dual slot]
+	- M7555 : RQDX3 MFM Winchester and floppy disk controller [dual slot]
 
+![KD-J11B CPU module](IMG_20230211_154526274.jpg)
 ![Micro PDP-11/83 Bus 1](IMG_20230211_154408769.jpg)
 ![Micro PDP-11/83 Bus 2](IMG_20230211_154423365.jpg)
 
-Possible cofiguration:
+### Supported modules
 
-Main Box:
-S1 [B]M8637-EF[/B] [MSV11-JE  2-Mbyte ECC [PMI?] RAM Q22 Quad ABCD]
-S2 [B]M8190-AE[/B] [KDJ11-BF   Q/U 11/83-84 CPU J11 CPU 18MHz with 2 boot & diagnostic ROMs, FPJ11-AA QUAD ABCD]
-S3 [B]M9047[/B] [Q   Grant continuity] ,[COLOR=#ff0000]M9047 [Same but this one shouldn't be in a CD slot??][/COLOR]
-S4 [B]M7196[/B] [TSV05 tape ctl for Q/Q22 QUAD ABAB capable]
-S5 [B]M9047, M9047[/B] [Q   Grant continuity]
-   [B]M8027[/B], [LPV11 Q  Printer Interface centronics DUAL]
-S7 [B]M9047[/B],
-   [B]M9047[/B] [Q   Grant continuity]
-S8 [B]M7546[/B] [TQK50-AA TMSCP TK50 tape ctl DUAL]
+	- M8637 : MSV11-JE 2-Mbyte ECC RAM [quad slot]
+	- M7196 : TSV05 tape controller for Q/Q22 [quad slot]
+	- M9047 : Grant continuity
+	- M8027 : LPV11 Printer Interface centronics [dual slot]
+	- M7546 : TQK50-AA TK50 tape controller [dual slot]
+	- M8013 : RLV11 disk controller for RL01/RL02 drives [quad slot]
+	- M8014 : RLV11 communicates with M8013 over CD interconnect [quad slot]
+	- M8061 : RLV12 disk controller for RL01/RL02 drive [quad slot]
 
 ## Professional 350
 
@@ -198,7 +195,7 @@ The RK05J was the last model.
 
 RL02 drives are moving head magnetic disk drives which store about 10MB (512 tracks)
 on a removable data cartridge.  Up to four RL02 drives may be used, in any combination,
-from a single controller.  An RL11 (UNIBUS) or RLV11/RLV12 adatper (QBUS) is
+from a single controller.  An RL11 (UNIBUS) or RLV11/RLV12 adapter (QBUS) is
 used as the controller.
 
 !(IMG_20230204_162004029.jpg)
