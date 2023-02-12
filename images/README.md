@@ -13,11 +13,11 @@ The CPU is connected to the KY11-D front panel via a pair of BC08-R flat cables.
 
 Optional additions to the CPU included:
 
-	- KT11-D Memory Management
-	- KE11-E Extended Instruction Set (EIS)
-	- KE11-F Floating Instruction Set (FIS floating point)
-	- KJ11-A Stack Limit Register
-	- KW11-L Line Time Clock
+	- KT11-D : Memory Management
+	- KE11-E : Extended Instruction Set (EIS)
+	- KE11-F : Floating Instruction Set (FIS floating point)
+	- KJ11-A : Stack Limit Register
+	- KW11-L : Line Time Clock
 
 It came in two types of mounting boxes: the 21" BA11-F Mounting Box and the BA11-D/BA11-K
 Mounting Boxes (later units).  The BA11-D used 9-pin DEC power distribution connectors,
@@ -43,7 +43,7 @@ BA11-K mounting box.
 Both the PDP-11/34 and PDP-11/34A could be provided with either the KY11-LA Operator's
 Console or the KY11-LB Programmer's Console.  This model uses the KY11-LB console.
 
-Note, as is usual for PDP-11 CPUS, neither the KD11-E nor the KD11-EA has built-in
+Note, as is usual for PDP-11 CPUs, neither the KD11-E nor the KD11-EA has built-in
 termination and pull-ups for the UNIBUS.  The use of either an M9301 ROM or M9312 ROM
 (which include bus termination) is required in slot 3 or 4 of the CPU's backplane.
 
@@ -84,38 +84,41 @@ Boot ROM addresses: 773000-773776 (high ROM) and 765000-765776 (low ROM)
 
 ### Bring-up code
 
-Dump register to the serial console.
+Dump register to the serial console:
 
-1000: 012701	; 
-1001: 177564	;
-1002: 105711	;
-1003: 100376	;
-1004: 110061	;
-1005: 000002	; inc register
-1006: 005200	;
-1007: 000137	; jump
-1008: 001006	; - address
+	1000: 012701	; mov $177564,r1
+	1002: 177564	;
+	1004: 105711	; tstb (r1)
+	1006: 100376	; bpl 1004
+	1010: 110061	; movb r0,2(r1)
+	1012: 000002	;
+	1014: 005200	; inc r0
+	1017: 000137	; jmp @#1004
+	1020: 001004
 
 ## PDP-11/04
 
 The PDP-11/04 is a mid/late-70s implementation of the PDP-11 architecture for the UNIBUS.
 
-Essentially the same as PDP-11/34 except for different CPU boards.
-
-It uses the KD11-D CPU, which was implemented on a single hex card (M7263).
+Essentially the same as PDP-11/34 except for different CPU boards.  It uses the KD11-D CPU.
 
 The standard KY11-LA Operator's Console front panel had only 'Boot/Init', 'Halt/Cont',
 and power switches, and the system came with an M9301 ROM card which included a console
 emulator, which communicated through the console terminal.
 
 Either BA11-L half-height or BA11-K mounting boxes could be used.  This model uses the BA11-L
-model.
+mounting box.
 
 DEC did offer the KY11-LB Programmer's Console as an option for the PDP-11/04; it
 had an octal keypad, the usual 'Halt'/'Start'/etc keys, and a 6-digit LED display
 which showed address/data digitally.
 
 ![PDP-11/04](IMG_20230204_164602991.jpg)
+
+### Modules
+
+	- M7263 : KD11-D CPU [hex slot]
+
 
 ## Micro PDP11/83
 
@@ -198,4 +201,4 @@ on a removable data cartridge.  Up to four RL02 drives may be used, in any combi
 from a single controller.  An RL11 (UNIBUS) or RLV11/RLV12 adapter (QBUS) is
 used as the controller.
 
-!(IMG_20230204_162004029.jpg)
+![RL02](IMG_20230204_162004029.jpg)
