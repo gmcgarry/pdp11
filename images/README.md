@@ -1,6 +1,6 @@
 # ACMS Machines
 
-[Australian Computer Museum Society ACMS)](https://acms.org.au) has a collection
+[Australian Computer Museum Society ACMS](https://acms.org.au) has a collection
 of PDP-11 machine being refurbished.  Here are some images of the collection.
 
 ## PDP-11/40
@@ -13,11 +13,11 @@ The CPU is connected to the KY11-D front panel via a pair of BC08-R flat cables.
 
 Optional additions to the CPU included:
 
-	- KT11-D : Memory Management
-	- KE11-E : Extended Instruction Set (EIS)
-	- KE11-F : Floating Instruction Set (FIS floating point)
-	- KJ11-A : Stack Limit Register
-	- KW11-L : Line Time Clock
+	- KT11-D Memory Management
+	- KE11-E Extended Instruction Set (EIS)
+	- KE11-F Floating Instruction Set (FIS floating point)
+	- KJ11-A Stack Limit Register
+	- KW11-L Line Time Clock
 
 It came in two types of mounting boxes: the 21" BA11-F Mounting Box and the BA11-D/BA11-K
 Mounting Boxes (later units).  The BA11-D used 9-pin DEC power distribution connectors,
@@ -127,10 +127,12 @@ Released around 1985.  QBUS machine. BA-23 chassis?
 ![Micro PDP-11/83](IMG_20230211_160618215.jpg)
 
 ### Modules:
-	- M8190 : KD-J11-BF CPU J11 CPU 18MHz with 2 boot/diagnostic ROMs + FPJ11-AA [quad slot]
-	- M7957 : DZV11 quad asyncchronous multiplexer with RS232C interfaces [quad slot]
+	- M8190 : KD-J11-BF CPU @ 18MHz with 2 boot/diagnostic ROMs + FPJ11-AA FPU [quad slot]
+	- M8637 : MSV11-JB 1MB ECC DRAM [quad slot]
+	- M7957 : DZV11 quad asynchronous multiplexer with RS232C interfaces [quad slot]
 	- M9404 : Q22 bus cable connector [dual slot]
-	- M7555 : RQDX3 MFM Winchester and floppy disk controller [dual slot]
+		- connects to M9405 Q22 bus mirror
+	- M7555 : RQDX3 MFM Winchester and floppy disk controller for RX50/RD50-54/RD31/RD32) [dual slot]
 
 ![KD-J11B CPU module](IMG_20230211_154526274.jpg)
 ![Micro PDP-11/83 Bus 1](IMG_20230211_154408769.jpg)
@@ -138,14 +140,17 @@ Released around 1985.  QBUS machine. BA-23 chassis?
 
 ### Supported modules
 
-	- M8637 : MSV11-JE 2-Mbyte ECC RAM [quad slot]
+	- M3104 : DHV11-A 8-line async DMA mux [quad slot]
 	- M7196 : TSV05 tape controller for Q/Q22 [quad slot]
-	- M9047 : Grant continuity
-	- M8027 : LPV11 Printer Interface centronics [dual slot]
+	- M7504 : DEQNA-AA ethernet adapter [dual slot]
 	- M7546 : TQK50-AA TK50 tape controller [dual slot]
+	- M8027 : LPV11 Printer Interface centronics [dual slot]
 	- M8013 : RLV11 disk controller for RL01/RL02 drives [quad slot]
 	- M8014 : RLV11 communicates with M8013 over CD interconnect [quad slot]
+	- M8017 : DLV11-EC single line async control module [dual slot]
 	- M8061 : RLV12 disk controller for RL01/RL02 drive [quad slot]
+	- M8637 : MSV11-JE 2MB ECC DRAM [quad slot]
+	- M9047 : Grant continuity [dual slot]
 
 ## Professional 350
 
@@ -176,7 +181,22 @@ provides up to 512K bytes of mass storage via two 8-inch floppy disks, three
 asynchronous serial ports, one printer port, one modem port and one synchronous serial
 port.
 
-All three employed the same chipset as used on the LSI-11/03 and LSI-11/2 processors.
+The floppy drives are single-sided single-density 8-inch drives (not based on the RX01
+or RX02 floppy drive), but they are compatible with RX01 format and have an interface
+that is sort-of RX11-like. The interface is not compatible with the RX11.
+
+All three models cemployed the same chipset as used on the LSI-11/03 and LSI-11/2 processors.
+
+The PDT-11 runs a stripped down version of RT11. The PDT-11/130 and PDT-11/150 use
+the same PD.SYS driver in RT-11, with help from the standardized ROM which handles
+the hardware-specific stuff.  The PDT-11/150 cannot boot from a regular RT11 floppy.
+The RXT11 controller is not quite compatible with the RXV11.
+
+There is a way to make a PDT-11/150 boot disk using a normal RT11 distribution kit.
+One of the floppies in the RX01 distribution kit is bootable on the PDT-11.
+There are special drivers for the floppies and a special boot block.
+
+The I/O page of the PDT-11 is emulated by the 8085A processor.
 
 ![PDT-11/150](IMG_20230204_161816988.jpg)
 
