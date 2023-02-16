@@ -5,7 +5,7 @@ of PDP-11 machine being refurbished.  Here are some images of the collection.
 
 ## PDP-11/40
 
-Introduced in Janauary 1973.
+Introduced in January 1973.
 
 It is a higher performance version of the PDP-11/20, with a microcoded multi-board CPU.
 It uses the KD11-A CPU and an 18-bit MMU to support a maximum of 128 kw memory.
@@ -28,6 +28,8 @@ OS: DOS/BATCH, RSX11, RT-11, RSTS.
 ![PDP-11/40](IMG_20230204_162258261.jpg)
 
 ## PDP-11/34
+
+Introducted in 1976. UNIBUS machine..
 
 The PDP-11/34 is DEC's lower-cost replacement to the PDP-11/40 for the UNIBUS.  It has
 limited memory management capabilities of the PDP-11/40, as is was normally limited
@@ -98,7 +100,7 @@ Dump register to the serial console:
 
 ## PDP-11/04
 
-The PDP-11/04 is a mid/late-70s implementation of the PDP-11 architecture for the UNIBUS.
+Introduced in 1974.
 
 Essentially the same as PDP-11/34 except for different CPU boards.  It uses the KD11-D CPU.
 
@@ -119,16 +121,18 @@ which showed address/data digitally.
 
 	- M7263 : KD11-D CPU [hex slot]
 
-
 ## Micro PDP11/83
 
-Released around 1985.  QBUS machine. BA-23 chassis?
+Introduced in 1985.  QBUS machine.  The BA-23 enclosure is a tabletoph 8-slot enclosure
+with 120/240V 230W power supply (177mm H x 562mm W x 726mm D).  Maybe rackmount?
+
+See details in the [Micro PDP-11 System on bitsavers.org](http://www.bitsavers.org/pdf/dec/pdp11/microPDP11/EK-MIC11-TM-002_MicroPDP11_Systems_Technical_Manual_Sep85.pdf).
 
 ![Micro PDP-11/83](IMG_20230211_160618215.jpg)
 
 ### Modules:
-	- M8190 : KD-J11-BF CPU @ 18MHz with 2 boot/diagnostic ROMs + FPJ11-AA FPU [quad slot]
-	- M8637 : MSV11-JB 1MB ECC DRAM [quad slot]
+	- M8190 : KD-J11-BF CPU @ 18MHz PMI with 2 boot/diagnostic ROMs + FPJ11-AA FPU [quad slot]
+	- M8637 : MSV11-JE 2MB ECC DRAM [quad slot]
 	- M7957 : DZV11 quad asynchronous multiplexer with RS232C interfaces [quad slot]
 	- M9404 : Q22 bus cable connector [dual slot]
 		- connects to M9405 Q22 bus mirror
@@ -149,10 +153,99 @@ Released around 1985.  QBUS machine. BA-23 chassis?
 	- M8014 : RLV11 communicates with M8013 over CD interconnect [quad slot]
 	- M8017 : DLV11-EC single line async control module [dual slot]
 	- M8061 : RLV12 disk controller for RL01/RL02 drive [quad slot]
-	- M8637 : MSV11-JE 2MB ECC DRAM [quad slot]
+	- M8637 : MSV11-JD 1MB ECC DRAM [quad slot]
 	- M9047 : Grant continuity [dual slot]
 
+### ROM functions
+
+ROM should be mapped to addresses 17765000 - 17765776 (0x3FEA00 - 0x3FEBFE)
+
+Looks like ROM is actually present at 163000 + CSR=10
+
+At startup the ROM performs the following functions:
+
+	- run self-test diagnostics
+	- load the first 105 bytes (setup table )of the EEPROM into memory beginning at location 2000.
+	- boot according to configuration in setup table;
+		- boot from specified device
+		- enter dialog mode
+		- enter halt mode
+
+Typing <CTRL> C during self-test stops the test and causes the system to
+attempt to boot as if the self-test had completed successfully. 
+
+Typing <CTRL> P during the boot process causes the system to immediately 
+enter dialog mode.
+
+Dialog mode has the following commands:
+
+	- Help : describe each command
+	- Boot <device> : boot from device
+	- List : show supported boot devices
+	- Setup : enter setup mode
+	- Map : show memory map
+	- Test :  running self test in a loop
+
+Setup mode has the following commands:
+
+	- 1 : exit
+	- 2 : list/modify setup table
+	- 3 : list/modify boot translation in setup table
+	- 4 : list/modify terminal setup message in setup table
+	- 6 : list/modify switch boot selection in setup table
+	- 7 : list boot programs
+	- 8 : initialize setup table
+	- 9 : save setup table
+	- 10 : load setup table
+	- 11 : delete boot
+	- 12 : load boot into memory
+	- 13 : edit/create boot
+	- 14 : save boot
+	- 15 : Enter ROM ODT
+
+
+### Front Panel DIP switches
+
+Behind the front panel on the circuit board there is a 2-switch bank of DIP
+switches.  The function of the DIP switches are:
+
+	- SW1 : OFF = Enable Q22-bus BEVENT
+	- SW2 : OFF = Disable front-panel Reset button
+
+### M8190 E83 DIP switches
+
+The normal setting for all 8 switches is OFF.  Otherwise the boot device
+is specified:
+
+SW2/3/4 have the following function:
+
+	- 0 = boot automatically to dialog mode settings
+	- 1 = boot device 1
+	- 2 = boot device 2
+	- 3 = boot device 3
+	- 4 = boot device 4
+	- 5 = boot device 5
+	- 6 = boot device 6
+	- 7 = boot according to SW1
+
+SW1 OFF specifies to boot to ODT, otherwise run self-test diagnostics.
+
+SW5 OFF specifies system to enter dialog mode.
+
+SW5/6/7/8 specified console baud rate if external rotary on the back panel
+is not installed.  If the back panel is present, these switches must be OFF.
+
+### Error 61: M8190 clock Error
+
+The clock is on the KD-J11-B CPU module.  Try changing the swiches behind
+the front panel.  Then try going into setup and set
+the line time clock source to 50Hz instead of AC line frequency
+(Parameter ), 0=power, 1=50Hz, 2=60Hz, 3=80Hz)
+
+
 ## Professional 350
+
+Introduced in 1982.
 
 This model is equipped with 5.25-inch floppy disk drives and hard disks.
 The design was intended to avoid software exchange with existing PDP-11 models.
@@ -170,6 +263,8 @@ of limitations in the support chipset.
 ![Professional 350](IMG_20230204_162139997.jpg)
 
 ## PDT-11
+
+Introduced in 1976.
 
 The PDT-11 Series of user-programmable terminals.  The PDT-11 is based on the DEC
 LSI-11 microprocessor, and supports a VT100 display terminal or DECwriter teleprinter
