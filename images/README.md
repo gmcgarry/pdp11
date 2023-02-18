@@ -1,9 +1,7 @@
-# ACMS Machines
-
 [Australian Computer Museum Society ACMS](https://acms.org.au) has a collection
 of PDP-11 machine being refurbished.  Here are some images of the collection.
 
-## PDP-11/40
+# PDP-11/40
 
 Introduced in January 1973.
 
@@ -13,11 +11,11 @@ The CPU is connected to the KY11-D front panel via a pair of BC08-R flat cables.
 
 Optional additions to the CPU included:
 
-	- KT11-D Memory Management
-	- KE11-E Extended Instruction Set (EIS)
-	- KE11-F Floating Instruction Set (FIS floating point)
-	- KJ11-A Stack Limit Register
-	- KW11-L Line Time Clock
+- KT11-D Memory Management
+- KE11-E Extended Instruction Set (EIS)
+- KE11-F Floating Instruction Set (FIS floating point)
+- KJ11-A Stack Limit Register
+- KW11-L Line Time Clock
 
 It came in two types of mounting boxes: the 21" BA11-F Mounting Box and the BA11-D/BA11-K
 Mounting Boxes (later units).  The BA11-D used 9-pin DEC power distribution connectors,
@@ -27,7 +25,7 @@ OS: DOS/BATCH, RSX11, RT-11, RSTS.
 
 ![PDP-11/40](IMG_20230204_162258261.jpg)
 
-## PDP-11/34
+# PDP-11/34
 
 Introducted in 1976. UNIBUS machine..
 
@@ -53,28 +51,29 @@ This model is capable of running time-sharing, using memory management.
 
 ![PDP-11/34](IMG_20230204_155328402.jpg)
 
-### Modules
-	- M9312 : UNIBUS ROM and bus termination 
-	- M7859 : KY11-LB console controller
-	- M7254 : RK11-D disk controller
-	- M7255 : RK11-D disk controller
-	- M7256 : RK11-D disk controller
-	- M7257 : RK11-D disk controller
-	- M9202 : UNIBUS Jumper module (distribute AC loads and interconnect segments).
+## Modules
+
+- M9312 : UNIBUS ROM and bus termination 
+- M7859 : KY11-LB console controller
+- M7254 : RK11-D disk controller
+- M7255 : RK11-D disk controller
+- M7256 : RK11-D disk controller
+- M7257 : RK11-D disk controller
+- M9202 : UNIBUS Jumper module (distribute AC loads and interconnect segments).
 
 Boot ROM addresses: 773000-773776 (high ROM) and 765000-765776 (low ROM)
 
-### Supported modules
+## Supported modules
 
-	- M7762 : RL11 disk controller (hex slot)
-	- M7850 : Parity controller
-	- M7856 : SLU/Clock
-	- M7859 : KB interface
-	- M8264 : SACK timeout module
-	- M9301 : Boot ROM + UNIBUS terminator
-	- M9302 : UNIBUS terminator
+- M7762 : RL11 disk controller (hex slot)
+- M7850 : Parity controller
+- M7856 : SLU/Clock
+- M7859 : KB interface
+- M8264 : SACK timeout module
+- M9301 : Boot ROM + UNIBUS terminator
+- M9302 : UNIBUS terminator
 
-### Using the console
+## Using the console
 
 - CTRL-HALT for single-step
 - CLR display
@@ -84,7 +83,7 @@ Boot ROM addresses: 773000-773776 (high ROM) and 765000-765776 (low ROM)
 - EXAM
 - enter address, then LOAD, CTRL-START
 
-### Bring-up code
+## Bring-up code
 
 Dump register to the serial console:
 
@@ -98,7 +97,7 @@ Dump register to the serial console:
 	1017: 000137	; jmp @#1004
 	1020: 001004
 
-## PDP-11/04
+# PDP-11/04
 
 Introduced in 1974.
 
@@ -117,11 +116,11 @@ which showed address/data digitally.
 
 ![PDP-11/04](IMG_20230204_164602991.jpg)
 
-### Modules
+## Modules
 
-	- M7263 : KD11-D CPU [hex slot]
+- M7263 : KD11-D CPU [hex slot]
 
-## Micro PDP11/83
+# Micro PDP11/83
 
 Introduced in 1985.  QBUS machine.  The BA-23 enclosure is a tabletoph 8-slot enclosure
 with 120/240V 230W power supply (177mm H x 562mm W x 726mm D).  Maybe rackmount?
@@ -130,33 +129,38 @@ See details in the [Micro PDP-11 System on bitsavers.org](http://www.bitsavers.o
 
 ![Micro PDP-11/83](IMG_20230211_160618215.jpg)
 
-### Modules:
-	- M8190 : KD-J11-BF CPU @ 18MHz PMI with 2 boot/diagnostic ROMs + FPJ11-AA FPU [quad slot]
-	- M8637 : MSV11-JE 2MB ECC DRAM [quad slot]
-	- M7957 : DZV11 quad asynchronous multiplexer with RS232C interfaces [quad slot]
-	- M9404 : Q22 bus cable connector [dual slot]
-		- connects to M9405 Q22 bus mirror
-	- M7555 : RQDX3 MFM Winchester and floppy disk controller for RX50/RD50-54/RD31/RD32) [dual slot]
+## Modules:
+
+- M8190 : KD-J11-BF CPU @ 18MHz PMI with 2 boot/diagnostic ROMs + FPJ11-AA FPU [quad slot]
+- M8637 : MSV11-JE 2MB ECC DRAM [quad slot]
+- M7957 : DZV11 quad asynchronous multiplexer with RS232C interfaces [quad slot]
+- 2x	: WGDZV/04 Webster [dual slot]
+- 3x	: WGDZV/06 Webster [dual slot]
+- 1x	: SDZV11/03 Webster [dual slot]
+- M9404 : Q22 bus cable connector [dual slot]
+	- connects to M9405 Q22 bus mirror
+- M7555 : RQDX3 MFM Winchester and floppy disk controller for RX50/RD50-54/RD31/RD32) [dual slot]
 
 ![KD-J11B CPU module](IMG_20230211_154526274.jpg)
 ![Micro PDP-11/83 Bus 1](IMG_20230211_154408769.jpg)
 ![Micro PDP-11/83 Bus 2](IMG_20230211_154423365.jpg)
+![Micro PDP-11/83 CPU Board](IMG_20230218_152831594.jpg)
 
-### Supported modules
+## Supported modules
 
-	- M3104 : DHV11-A 8-line async DMA mux [quad slot]
-	- M7196 : TSV05 tape controller for Q/Q22 [quad slot]
-	- M7504 : DEQNA-AA ethernet adapter [dual slot]
-	- M7546 : TQK50-AA TK50 tape controller [dual slot]
-	- M8027 : LPV11 Printer Interface centronics [dual slot]
-	- M8013 : RLV11 disk controller for RL01/RL02 drives [quad slot]
-	- M8014 : RLV11 communicates with M8013 over CD interconnect [quad slot]
-	- M8017 : DLV11-EC single line async control module [dual slot]
-	- M8061 : RLV12 disk controller for RL01/RL02 drive [quad slot]
-	- M8637 : MSV11-JD 1MB ECC DRAM [quad slot]
-	- M9047 : Grant continuity [dual slot]
+- M3104 : DHV11-A 8-line async DMA mux [quad slot]
+- M7196 : TSV05 tape controller for Q/Q22 [quad slot]
+- M7504 : DEQNA-AA ethernet adapter [dual slot]
+- M7546 : TQK50-AA TK50 tape controller [dual slot]
+- M8027 : LPV11 Printer Interface centronics [dual slot]
+- M8013 : RLV11 disk controller for RL01/RL02 drives [quad slot]
+- M8014 : RLV11 communicates with M8013 over CD interconnect [quad slot]
+- M8017 : DLV11-EC single line async control module [dual slot]
+- M8061 : RLV12 disk controller for RL01/RL02 drive [quad slot]
+- M8637 : MSV11-JD 1MB ECC DRAM [quad slot]
+- M9047 : Grant continuity [dual slot]
 
-### ROM functions
+## ROM functions
 
 ROM should be mapped to addresses 17765000 - 17765776 (0x3FEA00 - 0x3FEBFE)
 
@@ -164,12 +168,12 @@ Looks like ROM is actually present at 163000 + CSR=10
 
 At startup the ROM performs the following functions:
 
-	- run self-test diagnostics
-	- load the first 105 bytes (setup table )of the EEPROM into memory beginning at location 2000.
-	- boot according to configuration in setup table;
-		- boot from specified device
-		- enter dialog mode
-		- enter halt mode
+	run self-test diagnostics
+	load the first 105 bytes (setup table )of the EEPROM into memory beginning at location 2000.
+	boot according to configuration in setup table;
+		boot from specified device
+		enter dialog mode
+		enter halt mode
 
 Typing <CTRL> C during self-test stops the test and causes the system to
 attempt to boot as if the self-test had completed successfully. 
@@ -179,54 +183,55 @@ enter dialog mode.
 
 Dialog mode has the following commands:
 
-	- Help : describe each command
-	- Boot <device> : boot from device
-	- List : show supported boot devices
-	- Setup : enter setup mode
-	- Map : show memory map
-	- Test :  running self test in a loop
+	Help : describe each command
+	Boot <device> : boot from device
+	List : show supported boot devices
+	Setup : enter setup mode
+	Map : show memory map
+	Test :  running self test in a loop
+
+![List Command Output](IMG_20230218_145347732.jpg)
 
 Setup mode has the following commands:
 
-	- 1 : exit
-	- 2 : list/modify setup table
-	- 3 : list/modify boot translation in setup table
-	- 4 : list/modify terminal setup message in setup table
-	- 6 : list/modify switch boot selection in setup table
-	- 7 : list boot programs
-	- 8 : initialize setup table
-	- 9 : save setup table
-	- 10 : load setup table
-	- 11 : delete boot
-	- 12 : load boot into memory
-	- 13 : edit/create boot
-	- 14 : save boot
-	- 15 : Enter ROM ODT
+	1 : exit
+	2 : list/modify setup table
+	3 : list/modify boot translation in setup table
+	4 : list/modify terminal setup message in setup table
+	6 : list/modify switch boot selection in setup table
+	7 : list boot programs
+	8 : initialize setup table
+	9 : save setup table
+	10 : load setup table
+	11 : delete boot
+	12 : load boot into memory
+	13 : edit/create boot
+	14 : save boot
+	15 : Enter ROM ODT
 
-
-### Front Panel DIP switches
+## Front Panel DIP switches
 
 Behind the front panel on the circuit board there is a 2-switch bank of DIP
 switches.  The function of the DIP switches are:
 
-	- SW1 : OFF = Enable Q22-bus BEVENT
-	- SW2 : OFF = Disable front-panel Reset button
+	SW1 : OFF = Enable Q22-bus BEVENT
+	SW2 : OFF = Disable front-panel Reset button
 
-### M8190 E83 DIP switches
+## M8190 E83 DIP switches
 
 The normal setting for all 8 switches is OFF.  Otherwise the boot device
 is specified:
 
 SW2/3/4 have the following function:
 
-	- 0 = boot automatically to dialog mode settings
-	- 1 = boot device 1
-	- 2 = boot device 2
-	- 3 = boot device 3
-	- 4 = boot device 4
-	- 5 = boot device 5
-	- 6 = boot device 6
-	- 7 = boot according to SW1
+	0 = boot automatically to dialog mode settings
+	1 = boot device 1
+	2 = boot device 2
+	3 = boot device 3
+	4 = boot device 4
+	5 = boot device 5
+	6 = boot device 6
+	7 = boot according to SW1
 
 SW1 OFF specifies to boot to ODT, otherwise run self-test diagnostics.
 
@@ -235,15 +240,27 @@ SW5 OFF specifies system to enter dialog mode.
 SW5/6/7/8 specified console baud rate if external rotary on the back panel
 is not installed.  If the back panel is present, these switches must be OFF.
 
-### Error 61: M8190 clock Error
+## Error 61: M8190 clock Error
 
 The clock is on the KD-J11-B CPU module.  Try changing the swiches behind
 the front panel.  Then try going into setup and set
 the line time clock source to 50Hz instead of AC line frequency
 (Parameter ), 0=power, 1=50Hz, 2=60Hz, 3=80Hz)
 
+## RSX Operating System
 
-## Professional 350
+
+# BA11-SF Enclosure
+
+QBUS Expander box.
+
+## Modules
+
+- M7606 : KA630-AA MicroVAX II CPU, 22-bit QBUS, with FPU [quad slot]
+- M7609 : MS630-CA 8MB Memory module, [quad slot]
+- M7504 : DEQNA-AA ethernet adapter [dual slot]
+
+# Professional 350
 
 Introduced in 1982.
 
@@ -262,7 +279,7 @@ of limitations in the support chipset.
 
 ![Professional 350](IMG_20230204_162139997.jpg)
 
-## PDT-11
+# PDT-11
 
 Introduced in 1976.
 
@@ -295,7 +312,7 @@ The I/O page of the PDT-11 is emulated by the 8085A processor.
 
 ![PDT-11/150](IMG_20230204_161816988.jpg)
 
-## RK05
+# RK05
 
 Introduced 1972, the RK05 is a disk drive using a 14", single-platter front-loading
 removable disk.  The removable disk pack can hold about 2.5 MB.  2200BPI.
@@ -309,7 +326,7 @@ The RK05J was the last model.
 ![RK05](IMG_20230204_153053402.jpg)
 ![RK05j(IMG_20230204_155330319.jpg)
 
-## RL02
+# RL02
 
 RL02 drives are moving head magnetic disk drives which store about 10MB (512 tracks)
 on a removable data cartridge.  Up to four RL02 drives may be used, in any combination,
