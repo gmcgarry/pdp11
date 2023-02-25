@@ -1,12 +1,13 @@
 [Australian Computer Museum Society ACMS](https://acms.org.au) has a collection
-of PDP-11 machine being refurbished.  Here are some images of the collection.
+of PDP-11 machines being refurbished.  Here are some images of the collection.
 
 # PDP-11/40
 
 Introduced in January 1973.
 
 It is a higher performance version of the PDP-11/20, with a microcoded multi-board CPU.
-It uses the KD11-A CPU and an 18-bit MMU to support a maximum of 128 kw memory.
+It uses the KD11-A CPU and an 18-bit MMU to support a maximum of 128 Kwords memory.
+
 The CPU is connected to the KY11-D front panel via a pair of BC08-R flat cables.
 
 Optional additions to the CPU included:
@@ -17,33 +18,53 @@ Optional additions to the CPU included:
 - KJ11-A Stack Limit Register
 - KW11-L Line Time Clock
 
-It came in two types of mounting boxes: the 21" BA11-F Mounting Box and the BA11-D/BA11-K
-Mounting Boxes (later units).  The BA11-D used 9-pin DEC power distribution connectors,
+It came in two types of enclosures: the 21" BA11-F enclosure and the BA11-D/BA11-K
+enclosures (later units).  The BA11-D used 9-pin power distribution connectors,
 whereas the BA11-K used the 6-pin/15-pin pair.
 
 OS: DOS/BATCH, RSX11, RT-11, RSTS.
 
 ![PDP-11/40](IMG_20230204_162258261.jpg)
 
-# PDP-11/34
+# PDP-11/24
 
-Introducted in 1976. UNIBUS machine..
+The PDP-11/24 is a lower-cost replacement to the PDP-11/44 for the UNIBUS.  It uses
+the KDF11-U CPU and supports up to 4 Mbytes of main memory, using the Extended UNIBUS
+(EUB) between the CPU and memory.  Device modules are attached to a semi-separate UNIBUS.
 
-The PDP-11/34 is DEC's lower-cost replacement to the PDP-11/40 for the UNIBUS.  It has
-limited memory management capabilities of the PDP-11/40, as is was normally limited
-to 248KB of main memory.
+The PDP-11/24 comes in either the half-height (5-1/4 inch) BA11-L enclosure and the
+full-height (10-1/2 inch) BA11-A enclosure.  The former is specified to use either the
+-UA (120VAC input) or -UB (240V) versions of the H777 power supply.
+
+![PDP-11/24 half height](IMG_20230225_151801427.jpg)
+![PDP-11/24 full height](IMG_20230225_151845143.jpg)
+
+## Supported modules
+
+- M7133 : KDF11-U CPU module [hex slot]
+- M7134 : UBA or EUB memory [hex slot]
+
+
+# PDP-11/34A
+
+Introducted in 1976. Apparently it was the most successful model in terms of units shipped.
+
+The PDP-11/34 is a lower-cost replacement to the PDP-11/40 for the UNIBUS.  It has
+limited memory management capabilities of the PDP-11/40, as is normally limited
+to 248KB (124 Kwords) of main memory.
 
 The CPU came in two variants: the KD11-E (M7265 and M7266) and the KD11-EA (M8265 and M8266).
-Systems with the latter were denominated as a PDP-11/34A. Both required the DD11-P backplane.
-The latter had provision for the FP11-A floating point unit, and the KK11-A cache.
+Systems with the latter were denominated as a PDP-11/34A.  Both required the DD11-P backplane.
+Extended Instruction Set (EIS) is a standard feature for the KD11-E(A).  The latter had
+provision for the FP11-A floating point unit, and the KK11-A cache.
 
-Either BA11-L half-height or BA11-K mounting boxes could be used.  This model uses the
-BA11-K mounting box.
+Either BA11-L half-height or BA11-K enclosures could be used.  This model uses the
+BA11-K enclosure.
 
 Both the PDP-11/34 and PDP-11/34A could be provided with either the KY11-LA Operator's
 Console or the KY11-LB Programmer's Console.  This model uses the KY11-LB console.
 
-Note, as is usual for PDP-11 CPUs, neither the KD11-E nor the KD11-EA has built-in
+Note that neither the KD11-E nor the KD11-EA has built-in
 termination and pull-ups for the UNIBUS.  The use of either an M9301 ROM or M9312 ROM
 (which include bus termination) is required in slot 3 or 4 of the CPU's backplane.
 
@@ -53,27 +74,32 @@ This model is capable of running time-sharing, using memory management.
 
 ## Modules
 
-- M9312 : UNIBUS ROM and bus termination 
-- M7859 : KY11-LB console controller
-- M7254 : RK11-D disk controller
-- M7255 : RK11-D disk controller
-- M7256 : RK11-D disk controller
-- M7257 : RK11-D disk controller
-- M9202 : UNIBUS Jumper module (distribute AC loads and interconnect segments).
+- M8265 : KD11-EA CPU module (data path)
+- M8266 : KD11-EA CPU module (control path)
+- M7891 : MS11-L MOS memory module [hex slot]
+- M7856 : DL11-W serial console interface board with real-time clock [quad slot]
+- M7859 : KY11-LB programmer's console controller [quad slot]
+- M7254 : RK11-D disk controller [quad slot]
+- M7255 : RK11-D disk controller [quad slot]
+- M7256 : RK11-D disk controller [quad slot]
+- M7257 : RK11-D disk controller [quad slot]
+- M8267 : FP11-A floating-point module
+- M8268 : KK11-A cache memory module
+- M9202 : UNIBUS Jumper module (distribute AC loads and interconnect segments) [dual slot]
+- M9312 : UNIBUS ROM and bus termination [dual slot]
 
 Boot ROM addresses: 773000-773776 (high ROM) and 765000-765776 (low ROM)
 
-## Supported modules
+## Supported UNIBUS modules
 
-- M7762 : RL11 disk controller (hex slot)
-- M7850 : Parity controller
-- M7856 : SLU/Clock
-- M7859 : KB interface
+- M7762 : RL11 disk controller for RL01/RL02 drives [hex slot]
+- M7850 : parity controller
+- M8256 : RX211 floppy controller for RX02 [quad slot]
 - M8264 : SACK timeout module
 - M9301 : Boot ROM + UNIBUS terminator
 - M9302 : UNIBUS terminator
 
-## Using the console
+## Using the programmer's console
 
 - CTRL-HALT for single-step
 - CLR display
@@ -94,8 +120,8 @@ Dump register to the serial console:
 	1010: 110061	; movb r0,2(r1)
 	1012: 000002	;
 	1014: 005200	; inc r0
-	1017: 000137	; jmp @#1004
-	1020: 001004
+	1016: 000137	; jmp @#1004
+	1018: 001004
 
 # PDP-11/04
 
@@ -105,12 +131,12 @@ Essentially the same as PDP-11/34 except for different CPU boards.  It uses the 
 
 The standard KY11-LA Operator's Console front panel had only 'Boot/Init', 'Halt/Cont',
 and power switches, and the system came with an M9301 ROM card which included a console
-emulator, which communicated through the console terminal.
+emulator, which communicated through the serial console.
 
-Either BA11-L half-height or BA11-K mounting boxes could be used.  This model uses the BA11-L
-mounting box.
+Either BA11-L half-height or BA11-K enclosures could be used.  This model uses the BA11-L
+enclosure.
 
-DEC did offer the KY11-LB Programmer's Console as an option for the PDP-11/04; it
+The KY11-LB Programmer's Console was offered as an option for the PDP-11/04; it
 had an octal keypad, the usual 'Halt'/'Start'/etc keys, and a 6-digit LED display
 which showed address/data digitally.
 
@@ -122,14 +148,16 @@ which showed address/data digitally.
 
 # Micro PDP11/83
 
-Introduced in 1985.  QBUS machine.  The BA-23 enclosure is a tabletoph 8-slot enclosure
-with 120/240V 230W power supply (177mm H x 562mm W x 726mm D).  Maybe rackmount?
+Introduced in 1985.  QBUS machine.  The BA-23 enclosure is a tabletop 8-slot enclosure
+with 120/240V 230W power supply (177mm H x 562mm W x 726mm D).
+
+The H9278 Q22 backplane is a Q/CD type, with slots 1-3 being Q/CD and slots 4-8 being Q/Q.
 
 See details in the [Micro PDP-11 System on bitsavers.org](http://www.bitsavers.org/pdf/dec/pdp11/microPDP11/EK-MIC11-TM-002_MicroPDP11_Systems_Technical_Manual_Sep85.pdf).
 
 ![Micro PDP-11/83](IMG_20230211_160618215.jpg)
 
-## Modules:
+## Modules
 
 - M8190 : KD-J11-BF CPU @ 18MHz PMI with 2 boot/diagnostic ROMs + FPJ11-AA FPU [quad slot]
 - M8637 : MSV11-JE 2MB ECC DRAM [quad slot]
@@ -144,13 +172,14 @@ See details in the [Micro PDP-11 System on bitsavers.org](http://www.bitsavers.o
 ![KD-J11B CPU module](IMG_20230211_154526274.jpg)
 ![Micro PDP-11/83 Bus 1](IMG_20230211_154408769.jpg)
 ![Micro PDP-11/83 Bus 2](IMG_20230211_154423365.jpg)
-![Micro PDP-11/83 CPU Board](IMG_20230218_152831594.jpg)
 
-## Supported modules
+## Supported Q-bus modules
 
 - M3104 : DHV11-A 8-line async DMA mux [quad slot]
+- M3106 : DZQ11-M 4-line async serial line mux [dual slot]
 - M7196 : TSV05 tape controller for Q/Q22 [quad slot]
 - M7504 : DEQNA-AA ethernet adapter [dual slot]
+- M7516 : DELQA-YM ethernet adapter [dual slot]
 - M7546 : TQK50-AA TK50 tape controller [dual slot]
 - M8027 : LPV11 Printer Interface centronics [dual slot]
 - M8013 : RLV11 disk controller for RL01/RL02 drives [quad slot]
@@ -168,17 +197,17 @@ Looks like ROM is actually present at 163000 + CSR=10
 
 At startup the ROM performs the following functions:
 
-	run self-test diagnostics
-	load the first 105 bytes (setup table )of the EEPROM into memory beginning at location 2000.
-	boot according to configuration in setup table;
-		boot from specified device
-		enter dialog mode
-		enter halt mode
+- run self-test diagnostics
+- load the first 105 bytes (setup table )of the EEPROM into memory beginning at location 2000.
+- boot according to configuration in setup table;
+ - boot from specified device
+ - enter dialog mode
+ - enter halt mode
 
-Typing <CTRL> C during self-test stops the test and causes the system to
+Typing <CTRL>-C during self-test stops the test and causes the system to
 attempt to boot as if the self-test had completed successfully. 
 
-Typing <CTRL> P during the boot process causes the system to immediately 
+Typing <CTRL>-P during the boot process causes the system to immediately 
 enter dialog mode.
 
 Dialog mode has the following commands:
@@ -247,19 +276,6 @@ the front panel.  Then try going into setup and set
 the line time clock source to 50Hz instead of AC line frequency
 (Parameter ), 0=power, 1=50Hz, 2=60Hz, 3=80Hz)
 
-## RSX Operating System
-
-
-# BA11-SF Enclosure
-
-QBUS Expander box.
-
-## Modules
-
-- M7606 : KA630-AA MicroVAX II CPU, 22-bit QBUS, with FPU [quad slot]
-- M7609 : MS630-CA 8MB Memory module, [quad slot]
-- M7504 : DEQNA-AA ethernet adapter [dual slot]
-
 # Professional 350
 
 Introduced in 1982.
@@ -283,7 +299,7 @@ of limitations in the support chipset.
 
 Introduced in 1976.
 
-The PDT-11 Series of user-programmable terminals.  The PDT-11 is based on the DEC
+The PDT-11 Series of user-programmable terminals.  The PDT-11 is based on the
 LSI-11 microprocessor, and supports a VT100 display terminal or DECwriter teleprinter
 as the console plus up to three additional slave CRT or printer workstations.
 
@@ -324,7 +340,7 @@ at a time could transfer data.
 The RK05J was the last model.
 
 ![RK05](IMG_20230204_153053402.jpg)
-![RK05j(IMG_20230204_155330319.jpg)
+![RK05](IMG_20230204_155330319.jpg)
 
 # RL02
 
@@ -334,3 +350,42 @@ from a single controller.  An RL11 (UNIBUS) or RLV11/RLV12 adapter (QBUS) is
 used as the controller.
 
 ![RL02](IMG_20230204_162004029.jpg)
+
+
+# PDP-11 Power Supplies
+
+Power supplies supply +15VDC and the Line Time Clock (LTC) signal.
+
+Generally, integral power supplies also provided +12V/-12V DC for the MS11-M MOS memory's MOS memory chips.
+
+- H7441 : BA11-K enclosure
+- H765 : BA11-K enclosure
+- H777 : 5V @ 25A; +/- 15V; 5V
+- H742 : +15 @ 3A; +8VDC; -15V 
+- H745 
+- H7420 : 
+- H7440 : BA11-K enclosure; +5V @ 25A, 
+- H7140-AA : BA11-A enclosure; +/- 12VDC
+- H7140-AB : BA11-A enclosure; +/- 12VDC
+- H7140-DA : BA11-A enclosure; +12VDC, -15VDC
+- H7140-DB : BA11-A enclosure; +12VDC, -15VDC
+
+PDP-11s in Australia have the US 240V@15V connectors.
+
+Here's how connectors appear:
+
+Most US circuits are 15A with a U-shaped grounding hole.
+
+![US 125V/15A](125v15a.jpg0
+
+A US circuit with 20A has an additional horizontal slot.
+
+![US 125V/20A](125v20a.jpg)
+
+A US circuit with 250V has an additional horizontal slot.
+
+![US 250V/15A](250v15a.jpg)
+![US 250V/20A](250v20a.jpg)
+
+Australian circuits are 220-240V @ 10A.  Sockets with 220V-240V @ 15A have a wider ground connector.
+Sockets with 220V-240V @ 20A have wider ground and active/neutral connectors.
