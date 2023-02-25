@@ -340,7 +340,7 @@ at a time could transfer data.
 The RK05J was the last model.
 
 ![RK05](IMG_20230204_153053402.jpg)
-![RK05](IMG_20230204_155330319.jpg)
+![RK05j](IMG_20230204_155330319.jpg)
 
 # RL02
 
@@ -374,18 +374,22 @@ PDP-11s in Australia have the US 240V@15V connectors.
 
 Here's how connectors appear:
 
-Most US circuits are 15A with a U-shaped grounding hole.
+A typical US socket has vertical active/neutral pins and a U-shaped grounding hole.
+These are 125V at 15A sockets.
 
-![US 125V/15A](125v15a.jpg0
+![US 125V/15A](125v15a.jpg)
 
-A US circuit with 20A has an additional horizontal slot.
+A US socket for 125V at 20A uses a horizontal slot on the left pin.
 
 ![US 125V/20A](125v20a.jpg)
 
-A US circuit with 250V has an additional horizontal slot.
+A US socket for 250V at 15A uses horizonal active/neutral pins and a U-shaped grounding hole.
 
 ![US 250V/15A](250v15a.jpg)
+
+A US circuit for 250V at 20A uses a vertical slot on the left pin.
+
 ![US 250V/20A](250v20a.jpg)
 
-Australian circuits are 220-240V @ 10A.  Sockets with 220V-240V @ 15A have a wider ground connector.
-Sockets with 220V-240V @ 20A have wider ground and active/neutral connectors.
+Australian circuits are 220-240V @ 10A.  Sockets with 220V-240V @ 15A have a wider ground pin.
+Sockets with 220V-240V @ 20A have wider ground and active/neutral pins.
