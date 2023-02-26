@@ -5,18 +5,24 @@ of PDP-11 machines being refurbished.  Here are some images of the collection.
 
 Introduced in January 1973.
 
-It is a higher performance version of the PDP-11/20, with a microcoded multi-board CPU.
+It is a higher performance version of the PDP-11/20 (offering around twice
+the processing power), with a microcoded multi-board CPU.
 It uses the KD11-A CPU and an 18-bit MMU to support a maximum of 128 Kwords memory.
 
 The CPU is connected to the KY11-D front panel via a pair of BC08-R flat cables.
 
 Optional additions to the CPU included:
 
-- KT11-D Memory Management
-- KE11-E Extended Instruction Set (EIS)
-- KE11-F Floating Instruction Set (FIS floating point)
-- KJ11-A Stack Limit Register
-- KW11-L Line Time Clock
+- M7231 : KD11-A CPU data path [hex slot]
+- M7232 : KD11-A CPU uword [quad slot]
+- M7233 : KD11-A CPU IR decode [hex slot]
+- M7234 : KD11-A CPU timing [hex slot]
+- M7235 : KD11-A CPU status [hex slot]
+- M7236 : KT11-D memory management [hex slot]
+- M7238 : KE11-E Extended Instruction Set (EIS) [hex slot]
+- M7239 : KE11-F Floating Instruction Set (FIS floating point) [quad slot]
+- M7237 : KJ11-A Stack Limit Register [single slot]
+- M787  : KW11-L Line Time Clock [single slot]
 
 It came in two types of enclosures: the 21" BA11-F enclosure and the BA11-D/BA11-K
 enclosures (later units).  The BA11-D used 9-pin power distribution connectors,
@@ -27,6 +33,8 @@ OS: DOS/BATCH, RSX11, RT-11, RSTS.
 ![PDP-11/40](IMG_20230204_162258261.jpg)
 
 # PDP-11/24
+
+Introduced in 1981.
 
 The PDP-11/24 is a lower-cost replacement to the PDP-11/44 for the UNIBUS.  It uses
 the KDF11-U CPU and supports up to 4 Mbytes of main memory, using the Extended UNIBUS
@@ -44,13 +52,13 @@ full-height (10-1/2 inch) BA11-A enclosure.  The former is specified to use eith
 - M7133 : KDF11-U CPU module [hex slot]
 - M7134 : UBA or EUB memory [hex slot]
 
-
 # PDP-11/34A
 
-Introducted in 1976. Apparently it was the most successful model in terms of units shipped.
+Introduced in late 1975 or early 1976. Apparently it was the most successful model
+in terms of units shipped.
 
 The PDP-11/34 is a lower-cost replacement to the PDP-11/40 for the UNIBUS.  It has
-limited memory management capabilities of the PDP-11/40, as is normally limited
+limited memory management capabilities of the PDP-11/40, and is normally limited
 to 248KB (124 Kwords) of main memory.
 
 The CPU came in two variants: the KD11-E (M7265 and M7266) and the KD11-EA (M8265 and M8266).
@@ -391,5 +399,6 @@ A US circuit for 250V at 20A uses a vertical slot on the left pin.
 
 ![US 250V/20A](250v20a.jpg)
 
-Australian circuits are 220-240V @ 10A.  Sockets with 220V-240V @ 15A have a wider ground pin.
-Sockets with 220V-240V @ 20A have wider ground and active/neutral pins.
+Australian sockets are 220-240V @ 10A (but household circuits are typically rated from 20A).
+Sockets with 220V-240V @ 15A have a wider ground pin.  Sockets with 220V-240V @ 20A have
+ider ground and active/neutral pins.
