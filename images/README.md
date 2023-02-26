@@ -37,8 +37,13 @@ OS: DOS/BATCH, RSX11, RT-11, RSTS.
 Introduced in 1981.
 
 The PDP-11/24 is a lower-cost replacement to the PDP-11/44 for the UNIBUS.  It uses
-the KDF11-U CPU and supports up to 4 Mbytes of main memory, using the Extended UNIBUS
+the KDF11-U CPU and supports up to 4 Mbytes of main memory , using the Extended UNIBUS
 (EUB) between the CPU and memory.  Device modules are attached to a semi-separate UNIBUS.
+
+This 9-slot backplane was unique to the PDP-11/24; slot 1 was a custom slot for the
+KDF11-U CPU, slot 2 was likewise custom, and could hold either EUB memory or the KT24 UNIBUS
+map; slots 3-6 could hold either EUB memory or UNIBUS SPC devices. Slots 7-8 were ordinary
+UNIBUS MUD/SPC slots, and slot 9 was an ordinary UNIBUS SPC/UNIBUS Out slot.
 
 The PDP-11/24 comes in either the half-height (5-1/4 inch) BA11-L enclosure and the
 full-height (10-1/2 inch) BA11-A enclosure.  The former is specified to use either the
