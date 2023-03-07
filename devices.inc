@@ -4,6 +4,8 @@ KW11VEC         =       100	; 0x40
 PIRVEC		=	240	; 0x58
 PIRPSW		=	242
 
+; the top 4KB of 64KB (16-bit address space) is mapped to device registers
+
 ; UNIBUS MAP REGISTERS
 UNIBUS		=	0170200		; 11/44, 11/70
 
@@ -41,8 +43,11 @@ MTRD		=	0172532		; read lines
 ; RL11 CARTRIDGE DISK (5-10MB)
 RLCS		=	0174400
 
-; TU58 DECTAPE
-TUSLU		=	0176500
+; TU58 DECTAPE (DV11-compatible serial interface)
+DDRCSR		=       0176500		; receive control
+DDRBUF		=	0176502		; receive data
+DDXCSR		=	0176504		; transmit control
+DDXBUF		=	0176506		; transmit data
 
 ; RP11 MASSBUSS DISK (87MB-174MB,516MB)
 RPCSR		=	0176700
@@ -149,7 +154,7 @@ SDR		=	0177570		; switch and display register
 MMR0		=	0177572
 MMR1		=	0177574
 MMR2		=	0177576
-MMR3		=	0172516		; ???? 
+MMR3		=	0172516		; 11/83
 
 ; KW11-P PROGRAMMABLE CLOCK
 KW11PST		=	0177640		; control and status
@@ -173,9 +178,9 @@ _R7		=	0177707
 
 EADDRL		=	0177740		; cache: low error address
 EADDRH		=	0177742		; cache: low error address
-MSYSERR		=	0177744		; cache: memory system error
-MCTRL		=	0177746		; cache: memory control
-MMNT		=	0177750		; cache: maintenance
+MSERR		=	0177744		; cache: memory system error
+MCCR		=	0177746		; cache: memory control
+MREG		=	0177750		; cache: maintenance
 HITMISS		=	0177752		; cache: hit/miss
 
 MNT		=	0177750
@@ -183,8 +188,18 @@ MR		=	0177752
 SIZEL		=	0177760		; lower size register
 SIZEH		=	0177762		; upper size register
 ID		=	0177764		; system id register
-CER		=	0177766		; CPU error
+CERR		=	0177766		; CPU error
 MBR		=	0177770		; 11/45 and 11/70 microprogram break register
-PIR		=	0177772		; programmed interrupt request - traps (11/44, 11/45, 11/70, J11)
+PIRQ		=	0177772		; programmed interrupt request - traps (11/44, 11/45, 11/70, J11)
 SLR		=	0177774 	; stack limit register
 PSW             =       0177776		; processor status word (KA11)
+
+; top of 64KB of 4MB (22-bit address space) is mapped to device registers
+
+; PDP-11/83 devices
+EEPROM		= 	017765000	; 512B CPU EEPROM
+MEMCSR		=	017772100	; memory register
+CPUROM		=	017773000	; 512B CPU ROM
+BCSR		=	017777520	; BCSR
+PCR		=	017777522	; PCR
+BCR		=	017777524	; BCR/BDR

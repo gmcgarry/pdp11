@@ -1,19 +1,19 @@
-	; https://www.ak6dn.com/PDP-11/M9312/
-	; https://gunkies.org/wiki/M9312_ROM
+; https://www.ak6dn.com/PDP-11/M9312/
+; https://gunkies.org/wiki/M9312_ROM
 
-	; This boot PROM is not a real boot PROM, but a pseudo-boot device that
-	; runs the internal M9312 full diagnostics continuously, incl memory test.
-	;
-	; This PROM is intimately tied to the standard 23-248F1 console/diag PROM,
-	; and will NOT work in boards other than a real M9312 with a '248F1.
-	;
-	; Standard devices are 82S131, Am27S13, 74S571 or other compatible bipolar
-	; PROMs with a 512x4 TriState 16pin DIP architecture. This code resides in
-	; the low half of the device; the top half is blank and unused.
-	;
-	; Alternatively, 82S129 compatible 256x4 TriState 16pin DIP devices can be
-	; used, as the uppermost address line (hardwired low) is an active low chip
-	; select (and will be correctly asserted low).
+; This boot PROM is not a real boot PROM, but a pseudo-boot device that
+; runs the internal M9312 full diagnostics continuously, incl memory test.
+;
+; This PROM is intimately tied to the standard 23-248F1 console/diag PROM,
+; and will NOT work in boards other than a real M9312 with a '248F1.
+;
+; Standard devices are 82S131, Am27S13, 74S571 or other compatible bipolar
+; PROMs with a 512x4 TriState 16pin DIP architecture. This code resides in
+; the low half of the device; the top half is blank and unused.
+;
+; Alternatively, 82S129 compatible 256x4 TriState 16pin DIP devices can be
+; used, as the uppermost address line (hardwired low) is an active low chip
+; select (and will be correctly asserted low).
 
 diags	= 165564				; ph2 diags, ret to 2(R4), temp R2,R3,R5,SP
 prtoct	= 165430				; print octal in R0, ret to 2(R1), temp R2,R3

@@ -1,4 +1,4 @@
-SRCS = bm792.asm mb9312.asm rf11load.asm tc11load.asm tm11load.asm rp11load.asm rk11load.asm rl11load.asm pc11load.asm absload.asm
+SRCS = bm792.asm mb9312.asm rf11load.asm tc11load.asm tm11load.asm rp11load.asm rk11load.asm rl11load.asm pc11load.asm absload.asm multiload.asm tu58load.asm
 BINS = $(SRCS:.asm=.lda)
 
 all:	$(BINS)
