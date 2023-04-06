@@ -89,6 +89,7 @@ This model is capable of running time-sharing, using memory management.
 
 - M8265 : KD11-EA CPU module (data path)
 - M8266 : KD11-EA CPU module (control path)
+- M7800 : DL11-D/E serial interface board
 - M7891 : MS11-L MOS memory module [hex slot]
 - M7856 : DL11-W serial console interface board with real-time clock [quad slot]
 - M7859 : KY11-LB programmer's console controller [quad slot]
@@ -159,7 +160,20 @@ which showed address/data digitally.
 
 - M7263 : KD11-D CPU [hex slot]
 
-# Micro PDP11/83
+# PDP-11V03-A/E
+
+The first PDP-11 using LSI-11 chipset and QBUS.  A replacement for the PDP-11/03.
+
+## Modules
+
+This machine has the following modules:
+
+- M7940 : DLV11-A serial line unit [dual slot]
+- M7944 : MSV11-B read/write memory [dual slot]
+- M7946 : RXV11 floppy disk interface [dual slot]
+- M9400-YA : REV11-A bootstrap/diagnostic/terminator [dual slot]
+
+# Micro PDP-11/83
 
 Introduced in 1985.  QBUS machine.  The BA-23 enclosure is a tabletop 8-slot enclosure
 with 120/240V 230W power supply (177mm H x 562mm W x 726mm D).
@@ -180,13 +194,13 @@ See details in the [Micro PDP-11 System on bitsavers.org](http://www.bitsavers.o
 - 1x	: SDZV11/03 Webster [dual slot]
 - M9404 : Q22 bus cable connector [dual slot]
 	- connects to M9405 Q22 bus mirror
-- M7555 : RQDX3 MFM Winchester and floppy disk controller for RX50/RD50-54/RD31/RD32) [dual slot]
+- M7555 : RQDX3 MFM Winchester and floppy disk controller (for RX50/RD50-54/RD31/RD32) [dual slot]
 
 ![KD-J11B CPU module](IMG_20230211_154526274.jpg)
 ![Micro PDP-11/83 Bus 1](IMG_20230211_154408769.jpg)
 ![Micro PDP-11/83 Bus 2](IMG_20230211_154423365.jpg)
 
-## Supported Q-bus modules
+## Supported QBUS modules
 
 - M3104 : DHV11-A 8-line async DMA mux [quad slot]
 - M3106 : DZQ11-M 4-line async serial line mux [dual slot]
@@ -194,13 +208,22 @@ See details in the [Micro PDP-11 System on bitsavers.org](http://www.bitsavers.o
 - M7504 : DEQNA-AA ethernet adapter [dual slot]
 - M7516 : DELQA-YM ethernet adapter [dual slot]
 - M7546 : TQK50-AA TK50 tape controller [dual slot]
+- M7940 : DLV11-A serial line unit [dual slot]
+- M7941 : DRV11 parallel line unit [dual slot]
+- M7944 : MSV11-B read/write memory [dual slot]
+- M7946 : RXV11 floppy disk interface [dual slot]
 - M8027 : LPV11 Printer Interface centronics [dual slot]
 - M8013 : RLV11 disk controller for RL01/RL02 drives [quad slot]
 - M8014 : RLV11 communicates with M8013 over CD interconnect [quad slot]
 - M8017 : DLV11-EC single line async control module [dual slot]
+- M8028 : DLV11-F async serial line module
+- M8043 : DLV11-J async serial line module
+- M8047 : MXV11-A option module with second serial
 - M8061 : RLV12 disk controller for RL01/RL02 drive [quad slot]
 - M8637 : MSV11-JD 1MB ECC DRAM [quad slot]
+- M8639 : RQDX1/RQDX2 MFM Winchester and floppy controller (for RX50/RD50-54/RD31/RD32) [quad slot]
 - M9047 : Grant continuity [dual slot]
+- M9400-YA : REV11-A bootstrap/diagnostic/terminator [dual slot]
 
 ## ROM functions
 
@@ -365,6 +388,23 @@ used as the controller.
 ![RL02](IMG_20230204_162004029.jpg)
 
 
+# TU58
+
+A magnetic tape drive using a cartridge mechanism, branded as DECtape II. It could
+hold 256KB consisting of 512 blocks of 512 bytes each.  It connected to a DLV11-compatible
+serial port (addressed at 176500) and used a fairly simple communications protocol called
+the Radial Serial Protocol (RSP) or the enhanced Modified Radial Serial Protocol (MRSP).
+
+The Micro PDP-11/83 can boot from TU58:
+
+	BOOT DD
+
+Communicating over serial interface means it's easy to emulate with modern technology.
+
+See ![TU58fs](http://retrocmp.com/tools/tu58fs/265-tu58fs-pdp-11-boot-loader-operation)
+which is software which connects to ODT over the serial console to upload the bootstrap
+code for TU58 emulation.
+
 # PDP-11 Power Supplies
 
 Power supplies supply +15VDC and the Line Time Clock (LTC) signal.
@@ -406,4 +446,4 @@ A US circuit for 250V at 20A uses a vertical slot on the left pin.
 
 Australian sockets are 220-240V @ 10A (but household circuits are typically rated from 20A).
 Sockets with 220V-240V @ 15A have a wider ground pin.  Sockets with 220V-240V @ 20A have
-ider ground and active/neutral pins.
+wider ground and active/neutral pins.
