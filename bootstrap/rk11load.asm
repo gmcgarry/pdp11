@@ -1,9 +1,11 @@
+SR = 0177570
 RKDA = 177412
 READGO = 5
 
-	.ORG 140000
+	.ORG 2000			; 0xE000
 
 START:  RESET
+	MOV	R3,$SR
         SWAB    R3                      ; UNIT NUMBER
         ASL     R3
         ASL     R3

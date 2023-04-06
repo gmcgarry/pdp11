@@ -1,8 +1,10 @@
+SR = 0177570
 RLCS = 174400
 
-	.ORG	140000
+	.ORG	2000
 
 START:	RESET
+	MOV	R3,$SR
         SWAB    R3                      ; UNIT NUMBER
         MOV     $RLCS,R1                ; CSR
         MOV     $13,4(R1)               ; CLR ERR

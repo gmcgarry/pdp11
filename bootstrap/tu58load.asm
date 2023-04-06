@@ -28,7 +28,7 @@ ddrbuf	=	2			; receive data
 ddxcsr	=	4			; transmit control
 ddxbuf	=	6			; transmit data
 
-	.org	10000 			; arbitrary position
+	.org	2000 			; arbitrary position
 
 ; --------------------------------------------------
 
